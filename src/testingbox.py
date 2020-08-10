@@ -36,9 +36,15 @@ def ctrl_lib():
             for i in range(len(not_installed)):
                 temp += "'" + not_installed[i] + "' "
             print("These libraries " + temp + "are not installed. Please install them via pip3")
-        else:
+            exit(1)
+        elif len(not_installed) == 1:
             print("The library '{0}' is not installed. Please install it via pip3".format(not_installed[0]))
+            exit(1)
+        else:
+            print("Libraries are OK")
+            return 0
 
 
 if __name__ == '__main__':
-    ctrl_lib()
+    if ctrl_lib() == 0:
+        pass
