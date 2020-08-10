@@ -3,9 +3,13 @@ TestingBox main file
 """
 
 import subprocess
+import argparse
 
 __author__ = 'Elia Vicentini'
 __version__ = '0.1'
+
+# Global variables
+verbose = False
 
 
 def ctrl_lib():
@@ -41,10 +45,19 @@ def ctrl_lib():
             print("The library '{0}' is not installed. Please install it via pip3".format(not_installed[0]))
             exit(1)
         else:
-            print("Libraries are OK")
-            return 0
+            if verbose:
+                print("Libraries are OK")
+            return True
 
 
 if __name__ == '__main__':
-    if ctrl_lib() == 0:
+
+    parser = argparse.ArgumentParser(description='TestingBox')
+    parser.add_argument('-v', help='verbose', action='store_true')
+    args = vars(parser.parse_args(args=None))
+
+    if args['v'] is True:
+        verbose = True
+
+    if ctrl_lib():
         pass
