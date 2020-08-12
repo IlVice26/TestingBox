@@ -64,12 +64,12 @@ def menu():
     win.addstr(0, 0, "-------------------------------------------------------\n"
                      "|                  TestingBox v. " + __version__ + '                  |\n'
                      '-------------------------------------------------------\n\n'
-                     'H) Test Hard Disk\n'
+                     'H) Hard Disk Testing Tool\n'
                      '\n'
                      'I) View program information\n'
                      'Q) Quit\n'
                      '\n'
-                     'Enter your choice: ')
+                     '?) Enter your choice: ')
 
     choice = win.getstr().decode('utf-8').lower()
     win.refresh()
