@@ -4,6 +4,7 @@ TestingBox main file
 
 import subprocess
 import argparse
+import curses
 
 __author__ = 'Elia Vicentini'
 __version__ = '0.1'
@@ -54,6 +55,36 @@ def ctrl_lib():
               "repository again from Github")
 
 
+def menu():
+    """View the menu and its choices"""
+
+    win = curses.initscr()
+    win.erase()
+
+    win.addstr(0, 0, "-------------------------------------------------------\n"
+                     "|                  TestingBox v. " + __version__ + '                  |\n'
+                     '-------------------------------------------------------\n\n'
+                     'H) Test Hard Disk\n'
+                     '\n'
+                     'I) View program information\n'
+                     'Q) Quit\n'
+                     '\n'
+                     'Enter your choice: ')
+
+    choice = win.getstr().decode('utf-8').lower()
+    win.refresh()
+
+    if choice == 'h':
+        pass
+    elif choice == 'i':
+        pass
+    elif choice == 'q':
+        exit(0)
+    else:
+        win.erase()
+        menu()
+
+
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='TestingBox')
@@ -64,4 +95,4 @@ if __name__ == '__main__':
         verbose = True
 
     if ctrl_lib():
-        pass
+        menu()
